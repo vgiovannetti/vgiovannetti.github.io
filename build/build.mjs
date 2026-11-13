@@ -78,6 +78,8 @@ if (errores.length) {
 await rm(salida, { recursive: true, force: true });
 await mkdir(salida, { recursive: true });
 for (const carpeta of ["css", "js", "fonts"]) await cp(join(raiz, carpeta), join(salida, carpeta), { recursive: true });
+// public/: archivos que van tal cual en la raíz del sitio (ej. verificación de Google Search Console)
+try { await cp(join(raiz, "public"), salida, { recursive: true }); } catch (e) { if (e.code !== "ENOENT") throw e; }
 await cp(join(raiz, "img"), join(salida, "img"), {
   recursive: true,
   filter: (origen) => !origen.includes(join("img", "subidas")), // los originales subidos no se publican
