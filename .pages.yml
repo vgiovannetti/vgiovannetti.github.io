@@ -1,0 +1,252 @@
+# Configuración del panel de administración (Pages CMS · app.pagescms.org)
+# Cada entrada de "content" es una sección del menú del panel.
+# Los marcadores [COMPLETAR: …] se ven resaltados en amarillo en el sitio hasta que se reemplazan.
+
+media:
+  input: img/subidas
+  output: /img/subidas
+  rename: safe
+  extensions: [jpg, jpeg, png, webp]
+
+content:
+  - name: inicio
+    label: "1 · Portada (inicio)"
+    type: file
+    path: content/inicio.json
+    format: json
+    fields:
+      - name: antetitulo
+        label: Línea chiquita arriba del título
+        type: string
+        options: { maxlength: 70 }
+      - name: titulo
+        label: Título de bienvenida
+        type: string
+        required: true
+        options: { maxlength: 90 }
+      - name: bajada
+        label: Texto de presentación (debajo del título)
+        type: text
+        required: true
+        options: { maxlength: 300 }
+
+  - name: sobre_mi
+    label: "2 · Sobre mí"
+    type: file
+    path: content/sobre_mi.json
+    format: json
+    fields:
+      - name: titulo
+        label: Título
+        type: string
+        required: true
+        options: { maxlength: 60 }
+      - name: texto
+        label: Presentación
+        description: "Para empezar un párrafo nuevo, dejá un renglón en blanco."
+        type: text
+        required: true
+      - name: foto
+        label: Foto profesional
+        description: "Subí una foto vertical (JPG o PNG). No importa si pesa mucho: el sitio la achica sola. Si la dejás vacía, se ve la ilustración provisoria."
+        type: image
+      - name: formacion
+        label: Formación (un renglón por título o curso)
+        type: string
+        list: true
+
+  - name: enfoque
+    label: "3 · Mi enfoque"
+    type: file
+    path: content/enfoque.json
+    format: json
+    fields:
+      - name: titulo
+        label: Título
+        type: string
+        required: true
+        options: { maxlength: 70 }
+      - name: introduccion
+        label: Introducción
+        type: text
+      - name: pilares
+        label: Pilares (los recuadros de colores)
+        type: object
+        list: { min: 1, max: 8 }
+        fields:
+          - name: titulo
+            label: Nombre
+            type: string
+            required: true
+            options: { maxlength: 30 }
+          - name: texto
+            label: Explicación
+            type: text
+            required: true
+            options: { maxlength: 200 }
+
+  - name: areas
+    label: "4 · Áreas de acompañamiento"
+    type: file
+    path: content/areas.json
+    format: json
+    fields:
+      - name: titulo
+        label: Título
+        type: string
+        required: true
+        options: { maxlength: 70 }
+      - name: tarjetas
+        label: Tarjetas
+        type: object
+        list: { min: 1, max: 6 }
+        fields:
+          - name: titulo
+            label: Nombre del área
+            type: string
+            required: true
+            options: { maxlength: 40 }
+          - name: descripcion
+            label: Descripción corta
+            type: text
+            options: { maxlength: 200 }
+          - name: ejemplos
+            label: Ejemplos de situaciones (uno por renglón)
+            type: string
+            list: true
+
+  - name: como_trabajo
+    label: "5 · Cómo trabajo"
+    type: file
+    path: content/como_trabajo.json
+    format: json
+    fields:
+      - name: titulo
+        label: Título
+        type: string
+        required: true
+        options: { maxlength: 70 }
+      - name: items
+        label: Recuadros (modalidad, duración, horarios…)
+        type: object
+        list: { min: 1, max: 8 }
+        fields:
+          - name: titulo
+            label: Tema
+            type: string
+            required: true
+            options: { maxlength: 30 }
+          - name: texto
+            label: Detalle
+            type: text
+            required: true
+            options: { maxlength: 300 }
+
+  - name: preguntas
+    label: "6 · Preguntas frecuentes"
+    type: file
+    path: content/preguntas.json
+    format: json
+    fields:
+      - name: titulo
+        label: Título
+        type: string
+        required: true
+        options: { maxlength: 70 }
+      - name: lista
+        label: Preguntas
+        type: object
+        list: { min: 1, max: 15 }
+        fields:
+          - name: pregunta
+            label: Pregunta
+            type: string
+            required: true
+            options: { maxlength: 120 }
+          - name: respuesta
+            label: Respuesta
+            description: "Para empezar un párrafo nuevo, dejá un renglón en blanco."
+            type: text
+            required: true
+
+  - name: contacto
+    label: "7 · Contacto"
+    type: file
+    path: content/contacto.json
+    format: json
+    fields:
+      - name: titulo
+        label: Título
+        type: string
+        required: true
+        options: { maxlength: 50 }
+      - name: texto
+        label: Texto
+        type: text
+        options: { maxlength: 250 }
+      - name: modalidad
+        label: Modalidad
+        description: "Ej.: online y presencial"
+        type: string
+        options: { maxlength: 60 }
+      - name: horarios
+        label: Días y horarios
+        description: "Ej.: lunes a viernes de 9 a 18 h. Si lo dejás vacío, no se muestra."
+        type: string
+        options: { maxlength: 100 }
+
+  - name: whatsapp
+    label: "8 · WhatsApp"
+    type: file
+    path: content/whatsapp.json
+    format: json
+    fields:
+      - name: caracteristica
+        label: Característica (sin el 0)
+        description: "Ej.: 11 para Buenos Aires"
+        type: string
+        required: true
+        pattern:
+          regex: "^0?[1-9][0-9]{1,3}$"
+          message: "Solo números, sin el 0 adelante. Ej.: 11"
+      - name: numero
+        label: Número (sin el 15)
+        description: "Ej.: 60327560"
+        type: string
+        required: true
+        pattern:
+          regex: "^[0-9][0-9 -]{5,11}$"
+          message: "Solo números (pueden tener espacios o guiones). Ej.: 6032-7560"
+      - name: mensaje
+        label: Mensaje que aparece escrito al abrir el chat
+        type: text
+        options: { maxlength: 200 }
+
+  - name: general
+    label: "9 · Datos generales"
+    type: file
+    path: content/general.json
+    format: json
+    fields:
+      - name: nombre
+        label: Nombre completo
+        type: string
+        required: true
+        options: { maxlength: 60 }
+      - name: titulo
+        label: Título profesional
+        description: "Usar «Consultora Psicológica». No usar «psicóloga» (profesión regulada)."
+        type: string
+        required: true
+        options: { maxlength: 40 }
+      - name: zona
+        label: Zona de atención presencial
+        description: "Solo barrio y ciudad, sin dirección exacta."
+        type: string
+        required: true
+        options: { maxlength: 50 }
+      - name: descripcion_buscadores
+        label: Descripción para Google y al compartir el enlace
+        type: text
+        required: true
+        options: { maxlength: 160 }

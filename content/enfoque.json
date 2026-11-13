@@ -1,0 +1,22 @@
+{
+  "titulo": "Centrado en vos, como persona",
+  "introduccion": "Trabajo desde el enfoque centrado en la persona, desarrollado por Carl Rogers. Parte de una idea sencilla y poderosa: cada persona tiene dentro de sí los recursos para crecer y encontrar su propio camino.",
+  "pilares": [
+    {
+      "titulo": "Escucha",
+      "texto": "Te escucho con atención y presencia, para comprender lo que vivís tal como vos lo vivís."
+    },
+    {
+      "titulo": "Aceptación",
+      "texto": "Acá no hay juicios. Podés traer lo que te pasa, como sea que te pase."
+    },
+    {
+      "titulo": "Empatía",
+      "texto": "Busco ponerme en tu lugar para que puedas ver con más claridad lo que sentís y necesitás."
+    },
+    {
+      "titulo": "Vos, protagonista",
+      "texto": "No te doy recetas: vos marcás el rumbo y el ritmo de tu proceso, y yo te acompaño."
+    }
+  ]
+}

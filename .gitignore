@@ -1,0 +1,4 @@
+node_modules/
+_site/
+# Notas internas del proyecto: no se publican (el repo es público)
+.project/

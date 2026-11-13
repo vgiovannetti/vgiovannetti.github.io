@@ -1,0 +1,450 @@
+/* ==========================================================================
+   Vanesa Mara Giovannetti · Consultora Psicológica
+   CSS propio, mobile-first. Para retocar el estilo, tocá primero :root.
+   ========================================================================== */
+
+/* ---------- Tipografías (alojadas en /fonts, licencia OFL) ---------- */
+@font-face {
+  font-family: "Nunito";
+  src: url("../fonts/nunito-latin-wght.woff2") format("woff2");
+  font-weight: 200 1000;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fraunces";
+  src: url("../fonts/fraunces-latin-wght.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- Variables: colores, tipografías y espaciados ---------- */
+:root {
+  /* Paleta "alegría serena" — contrastes verificados WCAG AA */
+  --c-fondo: #FFF8EE;        /* crema cálido */
+  --c-superficie: #FFFFFF;
+  --c-tinta: #3A2A24;        /* texto principal (12.9:1 sobre fondo) */
+  --c-tinta-suave: #6B5148;  /* texto secundario (6.9:1) */
+  --c-coral: #B8432A;        /* botones y acentos (blanco encima 5.4:1) */
+  --c-coral-oscuro: #9C3520; /* hover */
+  --c-sol: #F7B538;          /* amarillo decorativo (no para texto sobre claro) */
+  --c-durazno: #FFE1D1;
+  --c-manteca: #FFF0C2;
+  --c-menta: #D8F0E4;
+  --c-verde: #1F6F64;        /* enlaces y foco (5.7:1) */
+  --c-whatsapp: #1E7D4F;     /* botón flotante (blanco encima 5.1:1) */
+  --c-pie-enlace: #FFD9A0;   /* enlaces en el pie oscuro (10.2:1) */
+
+  --f-titulos: "Fraunces", Georgia, "Times New Roman", serif;
+  --f-texto: "Nunito", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  --t-base: 1.0625rem;  /* 17px */
+  --t-chico: 0.9375rem;
+  --t-h1: clamp(2.1rem, 1.4rem + 3.6vw, 3.6rem);
+  --t-h2: clamp(1.75rem, 1.35rem + 1.9vw, 2.6rem);
+  --t-h3: 1.3rem;
+
+  --e-1: 0.5rem;
+  --e-2: 1rem;
+  --e-3: 1.5rem;
+  --e-4: 2.5rem;
+  --e-5: 4rem;
+  --e-seccion: clamp(4rem, 3rem + 5vw, 7.5rem);
+
+  --radio: 1.25rem;
+  --radio-grande: 2rem;
+  --sombra: 0 10px 30px -12px rgba(58, 42, 36, 0.25);
+  --ancho-max: 72rem;
+  --alto-encabezado: 4.5rem;
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--alto-encabezado) + 1rem);
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+body {
+  margin: 0;
+  background: var(--c-fondo);
+  color: var(--c-tinta);
+  font-family: var(--f-texto);
+  font-size: var(--t-base);
+  line-height: 1.65;
+  overflow-wrap: break-word;
+}
+img, svg { max-width: 100%; height: auto; display: block; }
+h1, h2, h3 {
+  font-family: var(--f-titulos);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 var(--e-2);
+  letter-spacing: -0.01em;
+}
+h1 { font-size: var(--t-h1); }
+h2 { font-size: var(--t-h2); }
+h3 { font-size: var(--t-h3); }
+p { margin: 0 0 var(--e-2); }
+ul { padding-left: 1.2em; }
+a { color: var(--c-verde); text-underline-offset: 0.2em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible {
+  outline: 3px solid var(--c-verde);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.contenedor {
+  width: 100%;
+  max-width: var(--ancho-max);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+@media (min-width: 48em) { .contenedor { padding-inline: 2rem; } }
+.contenedor--angosto { max-width: 50rem; }
+
+.saltar {
+  position: absolute; left: 1rem; top: -100px;
+  background: var(--c-tinta); color: #fff;
+  padding: 0.75rem 1rem; border-radius: 0.5rem; z-index: 100;
+}
+.saltar:focus { top: 1rem; }
+
+.antetitulo {
+  font-size: var(--t-chico);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-coral);
+  margin-bottom: var(--e-1);
+}
+
+/* ---------- Botones ---------- */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 48px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  background: var(--c-coral);
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+  line-height: 1.2;
+  box-shadow: var(--sombra);
+  transition: background-color 0.2s, transform 0.2s;
+}
+.boton:hover { background: var(--c-coral-oscuro); }
+@media (prefers-reduced-motion: no-preference) {
+  .boton:hover { transform: translateY(-2px); }
+}
+.boton .icono { width: 1.35em; height: 1.35em; flex: none; }
+.boton--grande { font-size: 1.05rem; padding: 1rem 1.4rem; min-height: 56px; }
+@media (min-width: 48em) { .boton--grande { font-size: 1.1rem; padding: 1rem 1.75rem; } }
+.boton--chico { min-height: 44px; padding: 0.55rem 1.1rem; font-size: 0.95rem; box-shadow: none; }
+
+.enlace-flecha {
+  display: inline-flex; align-items: center; min-height: 48px;
+  font-weight: 700; color: var(--c-tinta);
+}
+.enlace-flecha::after { content: "→"; margin-left: 0.4em; }
+
+/* ---------- 1. Encabezado ---------- */
+.encabezado {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255, 248, 238, 0.96);
+  border-bottom: 1px solid rgba(58, 42, 36, 0.08);
+}
+.encabezado__fila {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--e-2);
+  min-height: var(--alto-encabezado);
+}
+.marca {
+  display: flex; align-items: center; gap: 0.65rem;
+  text-decoration: none; color: var(--c-tinta);
+  min-width: 0;
+}
+.marca__logo { width: 44px; height: 44px; flex: none; }
+.marca__texto { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
+.marca__nombre { font-family: var(--f-titulos); font-weight: 600; font-size: 1rem; }
+.marca__titulo { font-size: 0.8rem; color: var(--c-tinta-suave); font-weight: 700; }
+
+.nav__boton {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  min-width: 48px; min-height: 48px; padding: 0 0.75rem;
+  border: 2px solid var(--c-tinta); border-radius: 999px;
+  background: transparent; color: var(--c-tinta);
+  font: inherit; font-weight: 800; cursor: pointer;
+  flex: none;
+}
+.nav__boton[hidden] { display: none; }
+.nav__boton-texto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (min-width: 25em) {
+  .nav__boton-texto { position: static; width: auto; height: auto; clip: auto; }
+}
+.nav__hamburguesa,
+.nav__hamburguesa::before,
+.nav__hamburguesa::after {
+  display: block; width: 18px; height: 2px; border-radius: 2px;
+  background: currentColor; position: relative;
+  transition: transform 0.2s;
+}
+.nav__hamburguesa::before, .nav__hamburguesa::after { content: ""; position: absolute; left: 0; }
+.nav__hamburguesa::before { top: -6px; }
+.nav__hamburguesa::after { top: 6px; }
+.nav__boton[aria-expanded="true"] .nav__hamburguesa { background: transparent; }
+.nav__boton[aria-expanded="true"] .nav__hamburguesa::before { transform: translateY(6px) rotate(45deg); }
+.nav__boton[aria-expanded="true"] .nav__hamburguesa::after { transform: translateY(-6px) rotate(-45deg); }
+@media (prefers-reduced-motion: reduce) {
+  .nav__hamburguesa, .nav__hamburguesa::before, .nav__hamburguesa::after { transition: none; }
+}
+
+.nav__menu { list-style: none; margin: 0; padding: 0; }
+.nav__menu a:not(.boton) {
+  display: flex; align-items: center; min-height: 48px;
+  padding: 0 0.5rem;
+  color: var(--c-tinta); font-weight: 700; text-decoration: none;
+}
+.nav__menu a:not(.boton):hover { color: var(--c-coral); }
+
+.encabezado__fila { max-width: 80rem; }
+.marca__nombre, .nav__menu a, .boton--chico { white-space: nowrap; }
+.encabezado__cta { display: none; }
+@media (min-width: 48em) {
+  .encabezado__cta { display: inline-flex; order: 2; margin-left: auto; }
+  .nav { order: 3; }
+}
+
+/* Menú desplegable (solo con JS; sin JS se ve la lista completa) */
+@media (max-width: 79.99em) {
+  .js .nav__menu {
+    display: none;
+    position: absolute; left: 0; right: 0; top: 100%;
+    background: var(--c-fondo);
+    border-bottom: 1px solid rgba(58, 42, 36, 0.12);
+    box-shadow: var(--sombra);
+    padding: var(--e-1) 1rem var(--e-3);
+  }
+  .js .nav__menu.abierto { display: block; }
+  .nav__menu li + li { border-top: 1px solid rgba(58, 42, 36, 0.08); }
+  .nav__cta { padding-top: var(--e-2); }
+  .nav__cta .boton { width: 100%; min-height: 52px; }
+}
+@media (min-width: 80em) {
+  .nav__boton { display: none !important; }
+  .nav { order: 2; margin-left: auto; }
+  .nav__menu { display: flex; align-items: center; gap: 0.1rem; }
+  .nav__menu a:not(.boton) { font-size: 0.95rem; padding: 0 0.45rem; }
+  .nav__cta { display: none; } /* en PC se usa .encabezado__cta */
+  .encabezado__cta { order: 3; margin-left: 0.5rem; }
+}
+
+/* ---------- 2. Hero ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: var(--e-5) var(--e-3);
+}
+@media (min-width: 64em) { .hero { padding-bottom: var(--e-5); } }
+.hero::before { /* sol suave de fondo en celular */
+  content: ""; position: absolute; z-index: -1;
+  width: 22rem; height: 22rem; right: -9rem; top: -7rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(247, 181, 56, 0.45), rgba(247, 181, 56, 0) 70%);
+}
+.hero__grilla { display: grid; gap: var(--e-4); align-items: center; }
+.hero__texto { max-width: 38rem; }
+.hero__bajada { font-size: 1.15rem; color: var(--c-tinta-suave); margin-bottom: var(--e-3); }
+.hero__acciones { display: flex; flex-wrap: wrap; align-items: center; gap: var(--e-2) var(--e-3); }
+.hero__ilustracion { display: none; }
+
+@media (min-width: 64em) {
+  .hero::before { display: none; }
+  .hero__grilla { grid-template-columns: 1.15fr 1fr; }
+  .hero__ilustracion { display: block; position: relative; aspect-ratio: 1; max-width: 30rem; width: 100%; justify-self: end; }
+  .burbuja { position: absolute; border-radius: 50%; }
+  .burbuja--sol { inset: 8% 10% 22% 18%; background: var(--c-sol); }
+  .burbuja--durazno { width: 46%; height: 46%; left: 0; bottom: 4%; background: var(--c-durazno); mix-blend-mode: multiply; }
+  .burbuja--menta { width: 38%; height: 38%; right: 0; bottom: 0; background: var(--c-menta); mix-blend-mode: multiply; }
+  .burbuja--chica { width: 12%; height: 12%; right: 8%; top: 4%; background: var(--c-coral); opacity: 0.85; }
+}
+
+/* ---------- Secciones ---------- */
+.seccion { padding-block: var(--e-seccion); }
+.seccion--suave { background: var(--c-superficie); }
+.encabezado-seccion { max-width: 42rem; margin-bottom: var(--e-4); }
+.encabezado-seccion p:last-child { color: var(--c-tinta-suave); font-size: 1.1rem; }
+
+/* ---------- 3. Sobre mí ---------- */
+.sobre-mi { display: grid; gap: var(--e-4); align-items: center; }
+.sobre-mi__foto { margin: 0; max-width: 20rem; width: 100%; justify-self: center; }
+.sobre-mi__foto img {
+  width: 100%; border-radius: var(--radio-grande);
+  box-shadow: 14px 14px 0 var(--c-sol);
+}
+.subtitulo { font-size: 1.15rem; margin-top: var(--e-4); }
+.lista-formacion { padding-left: 1.2em; }
+.lista-formacion li { margin-bottom: 0.4rem; }
+.lista-formacion li::marker { color: var(--c-coral); }
+@media (min-width: 48em) {
+  .sobre-mi { grid-template-columns: 2fr 3fr; gap: var(--e-5); }
+  .sobre-mi__foto { max-width: none; }
+}
+
+/* ---------- 4. Enfoque ---------- */
+.pilares {
+  list-style: none; padding: 0; margin: 0;
+  display: grid; gap: var(--e-3);
+}
+.pilar {
+  background: var(--c-fondo);
+  border-radius: var(--radio);
+  padding: var(--e-3);
+}
+.pilar p { margin: 0; color: var(--c-tinta-suave); }
+.pilar__marca { display: block; width: 2.5rem; height: 2.5rem; border-radius: 50%; margin-bottom: var(--e-2); }
+.pilar__marca--sol { background: var(--c-sol); }
+.pilar__marca--durazno { background: #F9B99A; }
+.pilar__marca--menta { background: #9FD8BD; }
+.pilar__marca--coral { background: var(--c-coral); }
+@media (min-width: 36em) { .pilares { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 64em) { .pilares { grid-template-columns: repeat(4, 1fr); } }
+
+/* ---------- 5. Áreas ---------- */
+.tarjetas { display: grid; gap: var(--e-3); }
+.tarjeta { border-radius: var(--radio-grande); padding: var(--e-4) var(--e-3); }
+.tarjeta--manteca { background: var(--c-manteca); }
+.tarjeta--durazno { background: var(--c-durazno); }
+.tarjeta > p { font-size: 1.1rem; }
+.tarjeta ul { margin: 0; padding-left: 1.2em; }
+.tarjeta li { margin-bottom: 0.5rem; }
+.tarjeta li::marker { color: var(--c-coral); }
+@media (min-width: 48em) {
+  .tarjetas { grid-template-columns: repeat(2, 1fr); }
+  .tarjeta { padding: var(--e-4); }
+}
+
+/* ---------- 6. Cómo trabajo ---------- */
+.datos { display: grid; gap: var(--e-2); margin: 0; }
+.dato {
+  background: var(--c-fondo);
+  border-left: 5px solid var(--c-sol);
+  border-radius: 0 var(--radio) var(--radio) 0;
+  padding: var(--e-3);
+}
+.dato dt { font-family: var(--f-titulos); font-weight: 600; font-size: 1.2rem; margin-bottom: 0.35rem; }
+.dato dd { margin: 0; color: var(--c-tinta-suave); }
+@media (min-width: 48em) {
+  .datos { grid-template-columns: repeat(2, 1fr); gap: var(--e-3); }
+}
+
+/* ---------- 7. Preguntas frecuentes ---------- */
+.faq details {
+  border-bottom: 1px solid rgba(58, 42, 36, 0.15);
+}
+.faq summary {
+  display: flex; justify-content: space-between; align-items: center; gap: var(--e-2);
+  min-height: 56px; padding: var(--e-2) 0;
+  font-weight: 800; font-size: 1.1rem;
+  cursor: pointer; list-style: none;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: "+"; flex: none;
+  display: grid; place-items: center;
+  width: 2rem; height: 2rem; border-radius: 50%;
+  background: var(--c-manteca); color: var(--c-coral);
+  font-size: 1.4rem; line-height: 1;
+}
+.faq details[open] summary::after { content: "–"; }
+.faq details p { color: var(--c-tinta-suave); padding-bottom: var(--e-2); }
+
+/* ---------- 8. Contacto ---------- */
+.contacto__caja {
+  background: var(--c-durazno);
+  border-radius: var(--radio-grande);
+  padding: var(--e-4) var(--e-2);
+  text-align: center;
+  max-width: calc(48rem);
+  display: flex; flex-direction: column; align-items: center;
+}
+@media (min-width: 48em) { .contacto__caja { padding: var(--e-5); } }
+.contacto__caja .boton { margin-block: var(--e-2) var(--e-3); }
+.contacto__info { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.25rem; }
+.contacto { padding-inline: 1rem; }
+@media (min-width: 48em) { .contacto { padding-inline: 2rem; } }
+
+/* ---------- 9. Pie ---------- */
+.pie {
+  background: var(--c-tinta);
+  color: var(--c-fondo);
+  padding-top: var(--e-5);
+  font-size: var(--t-chico);
+}
+.pie a { color: var(--c-pie-enlace); }
+.pie :focus-visible { outline-color: var(--c-pie-enlace); }
+.pie p { margin-bottom: 0.25rem; }
+.pie__nombre { font-family: var(--f-titulos); font-size: 1.25rem; font-weight: 600; }
+.pie__grilla { display: grid; gap: var(--e-4); }
+.pie__enlaces { list-style: none; padding: 0; margin: 0; }
+.pie__enlaces a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+.pie__enlaces a:hover { text-decoration: underline; }
+.pie__aviso {
+  border: 1px solid rgba(255, 217, 160, 0.4);
+  border-radius: var(--radio);
+  padding: var(--e-3);
+}
+.pie__aviso ul { margin: var(--e-1) 0 0; padding-left: 1.1em; }
+.pie__aviso li { margin-bottom: 0.4rem; }
+.pie__legal {
+  border-top: 1px solid rgba(255, 248, 238, 0.15);
+  margin-top: var(--e-4);
+  padding-block: var(--e-3);
+  padding-bottom: calc(var(--e-3) + 80px); /* espacio para el botón flotante en celular */
+  font-size: 0.875rem;
+}
+@media (min-width: 48em) {
+  .pie__legal { padding-bottom: var(--e-3); }
+}
+@media (min-width: 64em) {
+  .pie__grilla { grid-template-columns: 1fr 1fr 2fr; }
+}
+
+/* ---------- Botón flotante de WhatsApp (solo celular) ---------- */
+.wa-flotante {
+  position: fixed; z-index: 60;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  width: 60px; height: 60px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--c-whatsapp); color: #fff;
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.4);
+}
+.wa-flotante .icono { width: 30px; height: 30px; }
+.wa-flotante:focus-visible { outline-color: var(--c-tinta); outline-offset: 4px; }
+@media (min-width: 48em) { .wa-flotante { display: none; } }
+
+/* ---------- Marcadores para completar / revisar ---------- */
+.completar {
+  background: var(--c-manteca);
+  color: var(--c-tinta);
+  border-radius: 0.3em;
+  padding: 0 0.3em;
+  font-size: 0.92em;
+  font-style: italic;
+  box-decoration-break: clone; -webkit-box-decoration-break: clone;
+}
+.revisar {
+  background: var(--c-durazno);
+  color: var(--c-coral-oscuro);
+  font-weight: 800;
+  padding: 0 0.3em;
+  border-radius: 0.3em;
+}

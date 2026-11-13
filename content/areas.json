@@ -1,0 +1,27 @@
+{
+  "titulo": "¿En qué te puedo acompañar?",
+  "tarjetas": [
+    {
+      "titulo": "Desarrollo personal",
+      "descripcion": "Para cuando querés conocerte más, crecer o sentirte mejor en tu día a día.",
+      "ejemplos": [
+        "Conocerte mejor y fortalecer la confianza en vos",
+        "Mejorar la forma en que te vinculás con los demás",
+        "Aclarar qué querés y tomar decisiones con más seguridad",
+        "Encontrar sentido y propósito en lo que hacés"
+      ]
+    },
+    {
+      "titulo": "Crisis vitales",
+      "descripcion": "Para esos momentos en que la vida cambia y cuesta encontrar el equilibrio.",
+      "ejemplos": [
+        "Duelos y pérdidas",
+        "Separaciones y cambios en la pareja o la familia",
+        "Mudanzas y cambios de lugar",
+        "Transiciones laborales: cambio de trabajo, desempleo, jubilación",
+        "Cambios de etapa: hijos que se van de casa, maternidad o paternidad, nuevas etapas de la vida",
+        "Decisiones importantes que cuesta tomar"
+      ]
+    }
+  ]
+}

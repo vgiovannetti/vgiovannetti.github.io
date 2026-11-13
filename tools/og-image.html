@@ -1,0 +1,32 @@
+<!doctype html>
+<!-- Plantilla de la imagen para compartir (Open Graph, 1200x630).
+     Se captura a PNG con tools/generar-imagenes.ps1 -> img/og-image.png -->
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: "Fraunces"; src: url("../fonts/fraunces-latin-wght.woff2") format("woff2"); font-weight: 100 900; }
+  @font-face { font-family: "Nunito"; src: url("../fonts/nunito-latin-wght.woff2") format("woff2"); font-weight: 200 1000; }
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  body { background: #FFF8EE; font-family: Nunito, sans-serif; color: #3A2A24; position: relative; }
+  .sol { position: absolute; width: 520px; height: 520px; border-radius: 50%; background: #F7B538; right: -90px; top: -110px; }
+  .durazno { position: absolute; width: 300px; height: 300px; border-radius: 50%; background: #FFE1D1; right: 260px; bottom: -150px; }
+  .menta { position: absolute; width: 220px; height: 220px; border-radius: 50%; background: #D8F0E4; right: 40px; bottom: -60px; }
+  .logo { position: absolute; right: 120px; top: 120px; width: 220px; height: 220px; border-radius: 50%; background: #FFF8EE;
+          border: 6px solid #B8432A; display: grid; place-items: center; font-family: Fraunces, serif; font-weight: 600; font-size: 96px; }
+  .texto { position: absolute; left: 80px; top: 150px; width: 640px; }
+  .ante { text-transform: uppercase; letter-spacing: .1em; font-weight: 800; color: #B8432A; font-size: 26px; margin: 0 0 18px; }
+  h1 { font-family: Fraunces, serif; font-weight: 600; font-size: 68px; line-height: 1.08; margin: 0 0 24px; }
+  p.b { font-size: 30px; margin: 0; color: #6B5148; }
+</style>
+</head>
+<body>
+  <div class="sol"></div><div class="durazno"></div><div class="menta"></div>
+  <div class="logo">VG</div>
+  <div class="texto">
+    <p class="ante">Consultora Psicológica</p>
+    <h1>Vanesa Mara Giovannetti</h1>
+    <p class="b">Counseling · Online y presencial en Villa Luro, CABA</p>
+  </div>
+</body>
+</html>
