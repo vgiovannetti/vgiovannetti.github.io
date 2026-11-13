@@ -3,23 +3,23 @@
   "items": [
     {
       "titulo": "Modalidad",
-      "texto": "Online, por videollamada [COMPLETAR: plataforma, ej. Zoom, Meet o WhatsApp], o presencial en Villa Luro, CABA. La dirección exacta te la paso al coordinar."
+      "texto": "Online o presencial en Villa Luro, CABA. La dirección exacta te la paso al coordinar."
     },
     {
       "titulo": "Duración",
-      "texto": "Cada encuentro dura 60 minutos. La frecuencia la definimos en conjunto [COMPLETAR: frecuencia habitual, ej. semanal o quincenal]."
+      "texto": "Cada encuentro dura 50 minutos. La frecuencia la definimos en conjunto."
     },
     {
       "titulo": "Primer contacto",
-      "texto": "Me escribís por WhatsApp, te respondo [COMPLETAR: en cuánto tiempo solés responder] y coordinamos un primer encuentro para conocernos."
+      "texto": "Me escribís por WhatsApp, te respondo y coordinamos un primer encuentro para conocernos."
     },
     {
       "titulo": "Confidencialidad",
-      "texto": "Lo que compartas en los encuentros queda entre nosotros. [COMPLETAR: si querés, aclarar los límites de la confidencialidad]"
+      "texto": "Todo lo que compartís en nuestros encuentros está protegido por el secreto profesional. Te garantizo un espacio seguro y de absoluta reserva para que puedas expresarte con total libertad y confianza."
     },
     {
       "titulo": "Horarios",
-      "texto": "[COMPLETAR: días y horarios de atención]"
+      "texto": "Lunes a sábados de 10 a 21hs"
     }
   ]
 }
