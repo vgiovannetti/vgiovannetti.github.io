@@ -3,9 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node build/build.mjs"
+    "build": "node build/build.mjs",
+    "tarjeta": "node tools/tarjeta/generar.mjs"
   },
   "devDependencies": {
+    "qrcode": "^1.5.4",
     "sharp": "^0.35.5"
   }
 }
