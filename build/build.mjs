@@ -103,8 +103,22 @@ if (datos.sobre_mi?.foto) {
 }
 
 // ---------- 6. Generar el HTML ----------
-const html = render(datos, { waUrl, foto, urlSitio: ajustes.url_del_sitio || "", anio: new Date().getFullYear() });
+const urlSitio = ajustes.url_del_sitio || "";
+const html = render(datos, {
+  waUrl, foto, urlSitio, anio: new Date().getFullYear(),
+  verificacionGoogle: ajustes.google_site_verification || "",
+});
 await writeFile(join(salida, "index.html"), html, "utf8");
+
+// ---------- 7. Buscadores: robots.txt y sitemap.xml ----------
+if (urlSitio) {
+  const base = urlSitio.replace(/\/?$/, "/");
+  const hoy = new Date().toISOString().slice(0, 10);
+  await writeFile(join(salida, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${base}sitemap.xml\n`, "utf8");
+  await writeFile(join(salida, "sitemap.xml"),
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+    `  <url>\n    <loc>${base}</loc>\n    <lastmod>${hoy}</lastmod>\n  </url>\n</urlset>\n`, "utf8");
+}
 
 const pendientes = (html.match(/\[COMPLETAR:/g) || []).length;
 console.log(`Sitio generado en _site/ · WhatsApp: ${waUrl.split("?")[0]} · Foto: ${foto ? "sí" : "provisoria"} · ` +

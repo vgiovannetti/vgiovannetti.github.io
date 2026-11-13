@@ -20,7 +20,7 @@ const iconoWa = `<svg class="icono" aria-hidden="true" focusable="false"><use hr
 const coloresPilar = ["sol", "durazno", "menta", "coral"];
 const coloresTarjeta = ["manteca", "durazno", "menta"];
 
-export function render(d, { waUrl, foto, urlSitio, anio }) {
+export function render(d, { waUrl, foto, urlSitio, anio, verificacionGoogle }) {
   const g = d.general;
   const abs = (ruta) => (urlSitio ? urlSitio.replace(/\/$/, "") + "/" + ruta : ruta);
   const botonWa = (clase) =>
@@ -61,6 +61,7 @@ export function render(d, { waUrl, foto, urlSitio, anio }) {
   <title>${escapar(g.nombre)} · ${escapar(g.titulo)} | Counseling online y en ${escapar(g.zona)}</title>
   <meta name="description" content="${escapar(g.descripcion_buscadores)}">
   <meta name="theme-color" content="#FFF8EE">
+  ${verificacionGoogle ? `<meta name="google-site-verification" content="${escapar(verificacionGoogle)}">` : "<!-- google-site-verification: se completa en build/ajustes.json -->"}
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_AR">
