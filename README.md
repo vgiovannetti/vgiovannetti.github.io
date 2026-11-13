@@ -2,6 +2,8 @@
 
 Sitio de una sola página, sin cookies ni analíticas. Se edita desde un **panel web** (Pages CMS) y se publica solo en **GitHub Pages**.
 
+**Publicado en:** <https://vgiovannetti.github.io/> · Repositorio: <https://github.com/vgiovannetti/vgiovannetti.github.io> · Panel: <https://app.pagescms.org>
+
 ## Cómo funciona
 
 ```
@@ -35,7 +37,7 @@ tools/generar-imagenes.ps1 Regenera og-image.png y apple-touch-icon.png
 1. **Cuenta de GitHub:** crear una cuenta gratuita en <https://github.com/signup> (sugerido: con el mail de Vanesa).
 2. **Repositorio:** crear un repositorio **público** y vacío, sin README. Ejemplo de nombre: `sitio`. En las cuentas gratuitas, GitHub Pages solo funciona con repositorios públicos. Todo lo que contiene ya es público en el sitio.
 3. **Subir el código:** pedírselo a Claude pasándole la URL del repositorio, o hacerlo con `git push`.
-4. **Activar Pages:** en el repositorio, ir a *Settings → Pages → Build and deployment → Source* y elegir **GitHub Actions**. En 1 o 2 minutos el sitio queda en `https://<usuario>.github.io/<repositorio>/`.
+4. **Activar Pages:** en el repositorio, ir a *Settings → Pages → Build and deployment → Source* y elegir **GitHub Actions**. En 1 o 2 minutos el sitio queda publicado. Si el repositorio se llama `<usuario>.github.io`, la dirección es `https://<usuario>.github.io/` (sin subcarpeta).
 5. **Completar la URL:** poner esa dirección en `build/ajustes.json` (`url_del_sitio`), así la vista previa al compartir por WhatsApp sale bien.
 6. **Conectar el panel:**
    1. Entrar a <https://app.pagescms.org>, elegir *Sign in with GitHub* e instalar la GitHub App **solo en ese repositorio**.
